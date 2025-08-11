@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTHONY DARKO MINISTRIES</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* Light Sea Blue */
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #0d9488; /* Teal-600 */
+            border-bottom-color: #0d9488;
+        }
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .selected-card {
+            border-color: #dd6b20; /* Orange */
+            box-shadow: 0 0 0 3px rgba(221, 107, 32, 0.5);
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://i.pinimg.com/736x/50/dd/06/50dd06c10efe1b23d840679c14ecfe97.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        .btn-primary {
+            background-color: #0d9488; /* Teal-600 */
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0f766e; /* Teal-700 */
+        }
+        .btn-secondary {
+            background-color: #dd6b20; /* Orange */
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #c05621; /* Darker Orange */
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Modal styles */
+        .modal {
+            display: flex; /* Hidden by default, flex when shown */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex items-center space-x-3 nav-trigger">
+                        <img src="Logo.jpeg" alt="Logo" class="h-12 w-12 rounded-full">
+                        <div>
+                            <span class="font-bold text-lg hidden sm:block text-gray-800 uppercase">ANTHONY DARKO MINISTRIES</span>
+                            <span class="text-xs text-gray-500 hidden sm:block uppercase">SPIRIT GENERATION CHURCH (BETH ELOHIM)</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link nav-trigger px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent active">Home</a>
+                        <a href="#about" class="nav-link nav-trigger px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">About</a>
+                        <a href="#events" class="nav-link nav-trigger px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Events</a>
+                        <a href="#give" class="nav-link nav-trigger px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Give</a>
+                        <a href="#join" class="nav-link nav-trigger px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Join Us</a>
+                        <a href="#library" class="nav-link nav-trigger px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Library</a>
+                        <a href="#partnership" class="btn-primary px-4 py-2 rounded-full text-sm font-medium transition duration-300 nav-trigger">Partnership</a>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium active">Home</a>
+                <a href="#about" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#events" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Events</a>
+                <a href="#give" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Give</a>
+                <a href="#join" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Join Us</a>
+                <a href="#library" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Library</a>
+                <a href="#prayer" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Prayer Request</a>
+                <a href="#discipleship" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Discipleship</a>
+                <a href="#foundation" class="nav-link nav-trigger block px-3 py-2 rounded-md text-base font-medium">Foundation</a>
+                <a href="#partnership" class="nav-trigger block btn-primary text-white px-3 py-2 rounded-md text-base font-medium mt-2">Partnership</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="home" class="page active">
+            <section class="hero-bg text-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+                    <h1 class="text-4xl md:text-6xl font-serif font-bold uppercase">ANTHONY DARKO MINISTRIES</h1>
+                    <p class="mt-2 text-lg md:text-xl uppercase">SPIRIT GENERATION CHURCH (BETH ELOHIM)</p>
+                    <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">A GENERATION OF THE SPIRIT OF GOD, RAISING AN ARMY FOR THE END TIME HARVEST.</p>
+                    <div class="mt-8 flex flex-wrap justify-center gap-4">
+                        <a href="#join" class="nav-trigger inline-block btn-primary font-bold py-3 px-8 rounded-full transition duration-300">Become a Member</a>
+                        <a href="#about" class="nav-trigger inline-block bg-white text-teal-600 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">Learn More</a>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-serif font-bold mb-4">Get Connected</h2>
+                    <p class="max-w-3xl mx-auto text-gray-600 mb-12">We are a global family, united in faith and purpose. Discover how you can be a part of what God is doing through this ministry.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <a href="#prayer" class="nav-trigger card p-6 text-center bg-blue-50">
+                            <i class="fas fa-praying-hands fa-3x text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Prayer Request</h3>
+                            <p class="text-gray-600">Let us stand with you in prayer. Submit your request today.</p>
+                        </a>
+                        <a href="#discipleship" class="nav-trigger card p-6 text-center bg-orange-50">
+                            <i class="fas fa-users fa-3x text-orange-500 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Discipleship</h3>
+                            <p class="text-gray-600">Grow in your walk with God through our mentorship classes.</p>
+                        </a>
+                        <a href="#partnership" class="nav-trigger card p-6 text-center bg-yellow-50">
+                            <i class="fas fa-hand-holding-heart fa-3x text-yellow-500 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Partnership</h3>
+                            <p class="text-gray-600">Covenant with us to spread the Gospel to the nations.</p>
+                        </a>
+                        <a href="#foundation" class="nav-trigger card p-6 text-center bg-pink-50">
+                            <i class="fas fa-child fa-3x text-pink-500 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Our Foundation</h3>
+                            <p class="text-gray-600">Support the next generation through My Daughter My Child Foundation.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="about" class="page">
+            <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="text-center mb-12">
+                            <h2 class="text-4xl font-serif font-bold text-teal-800">About Us</h2>
+                            <p class="mt-2 text-gray-600">Building the Kingdom of God, one soul at a time.</p>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-teal-700 mb-4">Our Vision</h3>
+                                <p class="text-gray-700 leading-relaxed">Welcome to ANTHONY DARKO MINISTRIES (SPIRIT GENERATION CHURCH - BETH ELOHIM). We believe in the gifts and power of the Holy Spirit to teach and to preach the Gospel of the Kingdom and to share the love of Jesus - Yeshua with all people. We desire nothing from this world but to be in the presence of our Heavenly Father and to gaze at His beauty all the days of our lives.</p>
+                                <div class="mt-4 p-4 bg-gray-100 rounded-lg border-l-4 border-gray-400">
+                                    <p class="italic">"Having abolished in his flesh the enmity, even the law of commandments contained in ordinances; for to make in himself of twain one new man, so making peace;" - Ephesians 2:15 (KJV)</p>
+                                    <p class="italic mt-2">"After this I beheld, and, lo, a great multitude, which no man could number, of all nations, and kindreds, and people, and tongues, stood before the throne, and before the Lamb..." - Revelation 7:9 (KJV)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-teal-700 mb-4">Our Calling and Passion</h3>
+                                <p class="text-gray-700 leading-relaxed">Our calling is to build the Kingdom of God by bringing the church, the bride of Jesus Christ, into a deeper relationship with her Bridegroom through intimacy of worship and prayer, teaching of the Word, the Prophetic, and uniting the church as one people of God and one new man in Christ Yeshua. We obey the new commandment that we love each other as Jesus Christ loved us, so that the world would know that we are His disciples. We actively disciple the next generation of spiritual leaders to be commissioned and sent into the world for the harvest. And we prepare the church for the imminent return of her Bridegroom.</p>
+                                <div class="mt-4 p-4 bg-teal-50 rounded-lg border-l-4 border-teal-400">
+                                    <p class="italic">"Many people shall be joined to the LORD in that day, and they shall become My people. And I will dwell in your midst. Then you will know that the LORD of Hosts has sent me to you." - Zechariah 2:11 (KJV)</p>
+                                </div>
+                            </div>
+                             <div>
+                                <h3 class="text-2xl font-bold text-teal-700 mb-4">About the Founder</h3>
+                                <div class="flex flex-col md:flex-row items-center gap-8">
+                                    <img src="Founder Anthony Darko.jpeg" alt="Founder Anthony Darko" class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg flex-shrink-0">
+                                    <p class="text-gray-700 leading-relaxed text-center md:text-left">Anthony Darko is a humble and dedicated minister of the Gospel of God, called with an Apostolic and Prophetic mantle for this generation. Rooted in the Word of Truth — the gospel of our salvation as declared in Ephesians 1:13 — he believes deeply that all who hear and receive this message are sealed by the promised Holy Spirit. With a burning passion for the presence of God and a heart for His people, he labours tirelessly to see the Church walk in her true identity and power. He is a worshipper, a teacher, and a spiritual father, committed to raising up sons and daughters who will carry the fire of revival to the ends of the earth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="events" class="page">
+            <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-serif font-bold text-orange-700">Ministry Events</h2>
+                        <p class="mt-2 text-gray-600">Join us for a time of refreshing in the presence of the Lord.</p>
+                    </div>
+
+                    <div class="max-w-5xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-xl shadow-lg p-4">
+                            <h3 class="text-xl font-bold text-center mb-4">Event Highlights</h3>
+                            <img src="https://placehold.co/600x400/fbd38d/4a5568?text=Event+Image" alt="Event Highlight" class="rounded-lg w-full">
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-4">
+                             <h3 class="text-xl font-bold text-center mb-4">Featured on YouTube</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/videoseries?list=UU-kQmO3BZklNo51tpb" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-lg"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                        <div class="space-y-8">
+                            <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="flex items-start space-x-4 hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-lg text-center w-24 flex-shrink-0">
+                                    <p class="font-bold text-lg">7 AM</p>
+                                    <p class="text-sm">Mon-Fri</p>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold">Dew Of Hermon (Knocking on Heaven's Door)</h3>
+                                    <p class="text-gray-500"><i class="fab fa-tiktok mr-2"></i>Live on TikTok</p>
+                                    <p class="text-sm italic text-gray-600 mt-1">"As the dew of Hermon, and as the dew that descended upon the mountains of Zion: for there the LORD commanded the blessing, even life for evermore." - Psalm 133:3 (KJV)</p>
+                                </div>
+                            </a>
+                            <div class="border-t my-4"></div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="block hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-700">Mondays @ 8:00 PM</h4>
+                                    <p class="font-bold">Miracle Service</p>
+                                    <p class="text-gray-500"><i class="fab fa-tiktok mr-2"></i>Live on TikTok</p>
+                                </a>
+                                <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="block hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-700">Tuesdays @ 8:00 PM</h4>
+                                    <p class="font-bold">Testimony Tuesday</p>
+                                    <p class="text-gray-500"><i class="fab fa-tiktok mr-2"></i>Live on TikTok</p>
+                                </a>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-700">Wednesdays @ 8:00 PM</h4>
+                                    <p class="font-bold">Prayer Partners Meeting</p>
+                                    <p class="text-gray-500"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</p>
+                                </div>
+                                <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="block hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-700">Thursdays @ 8:00 PM</h4>
+                                    <p class="font-bold">Word of Truth (The Gospel of your Salvation)</p>
+                                    <p class="text-gray-500"><i class="fab fa-tiktok mr-2"></i>Live on TikTok</p>
+                                    <p class="text-xs italic mt-1">Ephesians 1:13</p>
+                                </a>
+                                <div class="md:col-span-2">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-700">Fridays</h4>
+                                    <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="block hover:bg-gray-50 p-2 rounded-lg transition-colors"><p><span class="font-bold">8:00 PM:</span> Financial Fridays <span class="text-gray-500">(<i class="fab fa-tiktok mr-1"></i>TikTok)</span></p></a>
+                                    <p class="p-2"><span class="font-bold">9:30 PM:</span> Kingdom Finance Partners Meeting <span class="text-gray-500">(<i class="fas fa-video mr-1"></i>Zoom)</span></p>
+                                </div>
+                                <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="block hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                                    <h4 class="text-lg font-semibold mb-2 text-blue-700">Sundays @ 3:00 PM & 8:00 PM</h4>
+                                    <p class="font-bold">Thanksgiving Service</p>
+                                    <p class="text-gray-500"><i class="fab fa-tiktok mr-2"></i>Live on TikTok</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="text-center mt-12">
+                        <a href="https://www.tiktok.com/@agabusdaprophet?_t=ZS-8yl3qkf35qZ&_r=1" target="_blank" class="inline-block btn-primary font-bold py-3 px-8 rounded-full transition duration-300 text-lg">
+                            <i class="fab fa-tiktok mr-2"></i> View Our Posts on TikTok
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="give" class="page">
+            <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                        <div class="space-y-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-2xl font-bold mb-4">Tithes, Offerings & Seeds of Faith</h3>
+                                <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500 mb-4">
+                                    <p class="italic text-gray-700">
+                                        "Bring ye all the tithes into the storehouse, that there may be meat in mine house, and prove me now herewith, saith the LORD of hosts, if I will not open you the windows of heaven, and pour you out a blessing, that there shall not be room enough to receive it."
+                                    </p>
+                                    <p class="font-semibold text-gray-600 mt-2">- Malachi 3:10 (KJV)</p>
+                                </div>
+                                <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                                    <p class="italic text-gray-700">
+                                        "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
+                                    </p>
+                                    <p class="font-semibold text-gray-600 mt-2">- 2 Corinthians 9:7 (KJV)</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-2xl font-bold mb-4">Ways to Give</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4 class="font-bold text-lg text-blue-800">South African Partners</h4>
+                                        <p><span class="font-semibold">SA Mobile Money:</span> 0677979198</p>
+                                        <p><span class="font-semibold">Capitec Bank:</span> 2077998985 (MS CNY DARKO)</p>
+                                    </div>
+                                    <div class="border-t pt-4">
+                                        <h4 class="font-bold text-lg text-blue-800">International Partners</h4>
+                                        <p><span class="font-semibold">Remitly / WorldRemit:</span> 1478 Leonhard Road, Margate, 4275. KZN South Africa.</p>
+                                        <p><span class="font-semibold">PayPal:</span> @prophetanthonydarko or anthonydarkoministries@gmail.com</p>
+                                        <p><span class="font-semibold">MTN Momo (Ghana):</span> +233592289243 (Wendy Nyameye Darko)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                             <div class="bg-green-50 rounded-xl shadow-lg p-6">
+                                <h3 class="text-2xl font-bold mb-4 text-green-800">Angels on Assignment</h3>
+                                <p class="text-gray-700 mb-4">
+                                    This special giving ministry is dedicated to caring for widows, orphans, and the less privileged in our communities. Your gift will bring hope and practical help to those in need.
+                                </p>
+                                <p class="text-gray-700">
+                                    To give specifically to "Angels on Assignment", please use the same payment details and use the reference
+                                    <strong class="text-green-700">"Angels"</strong>.
+                                </p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-8">
+                                <div class="text-center mb-6">
+                                    <h2 class="text-3xl font-serif font-bold text-green-700">Give Generously</h2>
+                                    <p class="mt-2 text-gray-600">Honour the Lord with your substance.</p>
+                                </div>
+                                <form id="giving-form" class="space-y-4">
+                                    <input type="hidden" name="form-type" value="Giving">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="give-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                            <input type="text" id="give-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        </div>
+                                        <div>
+                                            <label for="give-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
+                                            <input type="text" id="give-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="give-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                        <input type="email" id="give-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="give-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                        <input type="tel" id="give-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="give-type" class="block text-sm font-medium text-gray-700 mb-1">I would like to give my:</label>
+                                        <select id="give-type" name="givingType" class="w-full p-3 border bg-white border-gray-300 rounded-md">
+                                            <option value="Tithe">Tithe</option>
+                                            <option value="Offering">Offering</option>
+                                            <option value="Seed of Faith">Seed of Faith</option>
+                                            <option value="Foundation">Foundation Donation</option>
+                                            <option value="Angels on Assignment">Angels on Assignment</option>
+                                        </select>
+                                    </div>
+                                     <div>
+                                        <label for="give-amount" class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                                        <input type="number" id="give-amount" name="amount" placeholder="e.g., 500" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div class="text-center pt-4">
+                                        <button type="submit" class="btn-secondary font-bold py-3 px-12 rounded-lg w-full">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="join" class="page">
+             <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                         <div class="text-center mb-8">
+                            <h2 class="text-4xl font-serif font-bold text-teal-700">Become a Member</h2>
+                            <p class="mt-2 text-gray-600">Join the Spirit Generation family today!</p>
+                        </div>
+                        <form id="join-form" class="space-y-6">
+                            <input type="hidden" name="form-type" value="New Membership">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="join-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="join-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                </div>
+                                <div>
+                                    <label for="join-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
+                                    <input type="text" id="join-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                             <div>
+                                <label for="join-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="join-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                            </div>
+                            <div>
+                                <label for="join-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="join-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="join-marital-status" class="block text-sm font-medium text-gray-700 mb-1">Marital Status</label>
+                                    <select id="join-marital-status" name="maritalStatus" class="w-full p-3 border bg-white border-gray-300 rounded-md">
+                                        <option>Single</option>
+                                        <option>Married</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="join-kids" class="block text-sm font-medium text-gray-700 mb-1">Number of Children</label>
+                                    <input type="number" id="join-kids" name="numberOfChildren" class="w-full p-3 border border-gray-300 rounded-md" min="0">
+                                </div>
+                            </div>
+                             <div>
+                                <label for="join-kids-names" class="block text-sm font-medium text-gray-700 mb-1">Children's Names (if any)</label>
+                                <textarea id="join-kids-names" name="childrensNames" rows="2" class="w-full p-3 border border-gray-300 rounded-md"></textarea>
+                            </div>
+                            <div>
+                                <label for="join-prayer-request" class="block text-sm font-medium text-gray-700 mb-1">Prayer Request</label>
+                                <textarea id="join-prayer-request" name="prayerRequest" rows="3" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Share anything you'd like us to pray for..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-primary font-bold py-3 px-12 rounded-lg">Submit Membership</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="partnership" class="page">
+            <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                        <header class="text-center mb-8">
+                            <h2 class="text-4xl font-serif font-bold text-yellow-700">Financial Partnership</h2>
+                            <p class="text-gray-500 mt-2">Make a covenant with us by sacrifice.</p>
+                        </header>
+                         <div class="text-center my-8 p-6 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                            <p class="text-lg italic text-gray-700">"Gather my saints together unto me; those that have made a covenant with me by sacrifice."</p>
+                            <p class="text-md font-semibold text-gray-600 mt-2">- Psalm 50:5 (KJV)</p>
+                        </div>
+
+                        <form id="partnership-form">
+                            <input type="hidden" name="form-type" value="Partnership Commitment">
+                            <div class="mb-8">
+                                <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-6">1. Your Information</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="p-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                        <input type="text" id="p-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="p-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
+                                        <input type="text" id="p-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="p-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                        <input type="email" id="p-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="p-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                        <input type="tel" id="p-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">2. Choose Your Partnership Level</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="partnership-levels">
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="MAN" data-amount="500-5000 ZAR / 30-300 USD">
+                                        <h4 class="text-2xl font-bold text-gray-800">MAN</h4>
+                                        <p class="text-grey-600 my-4 text-sm">R500 - R5,000 / $30 - $300 USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
+                                    </div>
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="LION" data-amount="5000 - 7000 ZAR / 300-500 USD">
+                                        <h4 class="text-2xl font-bold text-amber-600">LION</h4>
+                                        <p class="text-amber-800 my-4 text-sm">R 5,000 - R 7,000 / $300 - $500 USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
+                                    </div>
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="OX" data-amount="7000-14000 ZAR / 500-800 USD">
+                                        <h4 class="text-2xl font-bold text-red-700">OX</h4>
+                                        <p class="text-red-500 my-4 text-sm">R 7,000 - R 14,000 / $500 - $800 USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
+                                    </div>
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="EAGLE" data-amount="14000 ZAR / 800-1000+ USD">
+                                        <h4 class="text-2xl font-bold text-indigo-600">EAGLE</h4>
+                                        <p class="text-indigo-500 my-4 text-sm">R 14,000 - R 17,000 / $800 - $1000+ USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="partnershipLevel" id="partnershipLevelInput">
+                            </div>
+
+                            <div class="mt-8">
+                                 <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-6">3. Commitment Details</h3>
+                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+                                     <div id="man-amount-container" class="hidden md:col-span-3 grid md:grid-cols-3 gap-6">
+                                         <div>
+                                            <label for="man-amount" class="block text-sm font-medium text-gray-700 mb-1">Specify Amount</label>
+                                            <input type="number" id="man-amount" name="manAmount" placeholder="500" min="500" max="1000" class="w-full p-3 border border-gray-300 rounded-md">
+                                        </div>
+                                         <div>
+                                            <label for="man-currency" class="block text-sm font-medium text-gray-700 mb-1">Currency</label>
+                                            <select id="man-currency" name="manCurrency" class="w-full p-3 border bg-white border-gray-300 rounded-md">
+                                                <option>ZAR</option>
+                                                <option>USD</option>
+                                            </select>
+                                        </div>
+                                     </div>
+                                    <div>
+                                        <label for="frequency" class="block text-sm font-medium text-gray-700 mb-1">Frequency</label>
+                                        <select id="frequency" name="frequency" class="w-full p-3 border bg-white border-gray-300 rounded-md">
+                                            <option>Weekly</option>
+                                            <option>Monthly</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="giving-day" class="block text-sm font-medium text-gray-700 mb-1">Day of Giving</label>
+                                        <input type="text" id="giving-day" name="givingDay" placeholder="e.g., Friday or 25th" class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="p-date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                                        <input type="date" id="p-date" name="date" class="w-full p-3 border border-gray-300 rounded-md">
+                                    </div>
+                                 </div>
+                            </div>
+
+                            <div class="mt-10 text-center">
+                                 <div class="flex items-center justify-center mb-6">
+                                    <input id="declaration" type="checkbox" required class="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded">
+                                    <label for="declaration" class="ml-2 block text-sm text-gray-900">I joyfully declare my partnership with ANTHONY DARKO MINISTRIES.</label>
+                                </div>
+                                <button type="submit" class="btn-secondary font-bold py-3 px-12 rounded-lg">Complete Partnership</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+        </div>
+        
+        <div id="prayer" class="page">
+             <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                         <div class="text-center mb-8">
+                            <h2 class="text-4xl font-serif font-bold text-blue-700">Prayer Request</h2>
+                            <p class="mt-2 text-gray-600">"The effectual fervent prayer of a righteous man availeth much." - James 5:16</p>
+                        </div>
+                        <form id="prayer-form" class="space-y-6">
+                             <input type="hidden" name="form-type" value="Prayer Request">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="prayer-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="prayer-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                </div>
+                                <div>
+                                    <label for="prayer-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
+                                    <input type="text" id="prayer-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="prayer-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="prayer-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                            </div>
+                             <div>
+                                <label for="prayer-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="prayer-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                            </div>
+                            <div>
+                                <label for="prayer-request" class="block text-sm font-medium text-gray-700 mb-1">Your Request</label>
+                                <textarea id="prayer-request" name="request" rows="5" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Share your prayer needs with us..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-primary font-bold py-3 px-12 rounded-lg">Submit Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div id="discipleship" class="page">
+             <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                         <div class="text-center mb-8">
+                            <h2 class="text-4xl font-serif font-bold text-purple-700">Discipleship & Mentorship</h2>
+                            <p class="mt-2 text-gray-600">Sign up to grow deeper in the Word and your calling.</p>
+                        </div>
+                        <form id="discipleship-form" class="space-y-6">
+                            <input type="hidden" name="form-type" value="Discipleship Sign-up">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="d-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="d-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                </div>
+                                <div>
+                                    <label for="d-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
+                                    <input type="text" id="d-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="d-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="d-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                            </div>
+                             <div>
+                                <label for="d-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="d-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                            </div>
+                            <div>
+                                <label for="d-interest" class="block text-sm font-medium text-gray-700 mb-1">Area of Interest</label>
+                                <textarea id="d-interest" name="interest" rows="3" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Tell us a bit about what you'd like to learn..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-secondary font-bold py-3 px-12 rounded-lg bg-purple-600 hover:bg-purple-700">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div id="foundation" class="page">
+             <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                         <div class="text-center mb-12">
+                            <i class="fas fa-gem fa-4x text-pink-500 mb-4"></i>
+                            <h2 class="text-4xl font-serif font-bold text-pink-700">My Daughter My Child Foundation</h2>
+                            <p class="mt-2 text-gray-600">Empowering the next generation of prominent women in society and the Kingdom.</p>
+                        </div>
+                        <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+                           <p>The "My Daughter My Child Foundation" is a heartfelt initiative of ANTHONY DARKO MINISTRIES focused on the girl child. We believe that every young girl is a precious gift, filled with immense potential to become a powerful and influential leader.</p>
+                           <p>Our mission is to take very good care of the girl child, providing a safe, nurturing, and empowering environment. We are currently targeting young girls from the ages of <strong>5 to 18 years</strong>, offering mentorship, education support, spiritual guidance, and life skills training.</p>
+                           <p>By sowing into this foundation, you are helping to shape a brighter future for these young women, equipping them to overcome challenges, discover their purpose, and become the prominent figures God has called them to be in society and in His Kingdom.</p>
+                        </div>
+                        
+                        <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <img src="https://placehold.co/400x300/f9a8d4/4a5568?text=Foundation+Event+1" alt="Foundation Event 1" class="rounded-lg shadow-md w-full h-full object-cover">
+                            <img src="https://placehold.co/400x300/f472b6/4a5568?text=Foundation+Event+2" alt="Foundation Event 2" class="rounded-lg shadow-md w-full h-full object-cover">
+                            <img src="https://placehold.co/400x300/ec4899/4a5568?text=Foundation+Event+3" alt="Foundation Event 3" class="rounded-lg shadow-md w-full h-full object-cover">
+                        </div>
+
+                        <div class="mt-12 text-center">
+                            <h3 class="text-2xl font-bold mb-4">Support the Foundation</h3>
+                            <p class="text-gray-600 mb-6">To give specifically to the foundation, please use the ministry's giving channels and add the reference <strong class="text-pink-600">"Foundation"</strong>.</p>
+                            <a href="#give" class="nav-trigger bg-pink-500 text-white font-bold py-3 px-12 rounded-lg hover:bg-pink-600">Give to the Foundation</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="library" class="page">
+            <section class="py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                        <header class="text-center mb-12">
+                            <h2 class="text-4xl font-serif font-bold text-teal-700">Ministry Library</h2>
+                            <p class="mt-2 text-gray-600">Resources to help you grow in your faith.</p>
+                        </header>
+
+                        <div class="text-center mb-12">
+                            <p class="text-lg text-gray-700">Welcome to our digital library. Here you will find a collection of books and resources to bless you and equip you for your spiritual journey.</p>
+                             <p class="text-gray-500 mt-2">More resources will be added soon. Stay tuned!</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            <div class="card text-center">
+                                <a href="https://www.your-google-drive-link-for-book1.com" target="_blank">
+                                    <img src="https://placehold.co/300x400/a7f3d0/1f2937?text=Book+Cover" alt="Book Cover" class="rounded-lg shadow-md mx-auto mb-4 w-full">
+                                    <h3 class="font-bold text-lg">The Coming Revival</h3>
+                                    <p class="text-sm text-gray-500">Anthony Darko</p>
+                                </a>
+                            </div>
+                             <div class="card text-center">
+                                <a href="https://www.your-google-drive-link-for-book2.com" target="_blank">
+                                    <img src="https://placehold.co/300x400/a7f3d0/1f2937?text=Book+Cover" alt="Book Cover" class="rounded-lg shadow-md mx-auto mb-4 w-full">
+                                    <h3 class="font-bold text-lg">Walking in Power</h3>
+                                    <p class="text-sm text-gray-500">Anthony Darko</p>
+                                </a>
+                            </div>
+                             <div class="card text-center">
+                                <a href="https://www.your-google-drive-link-for-book3.com" target="_blank">
+                                    <img src="https://placehold.co/300x400/a7f3d0/1f2937?text=Book+Cover" alt="Book Cover" class="rounded-lg shadow-md mx-auto mb-4 w-full">
+                                    <h3 class="font-bold text-lg">Keys to the Kingdom</h3>
+                                    <p class="text-sm text-gray-500">Anthony Darko</p>
+                                </a>
+                            </div>
+                             <div class="card text-center">
+                                <a href="https://www.your-google-drive-link-for-book4.com" target="_blank">
+                                    <img src="https://placehold.co/300x400/a7f3d0/1f2937?text=Book+Cover" alt="Book Cover" class="rounded-lg shadow-md mx-auto mb-4 w-full">
+                                    <h3 class="font-bold text-lg">The Heart of a Worshipper</h3>
+                                    <p class="text-sm text-gray-500">Anthony Darko</p>
+                                </a>
+                            </div>
+                             <div class="card text-center">
+                                <a href="https://www.your-google-drive-link-for-book5.com" target="_blank">
+                                    <img src="https://placehold.co/300x400/a7f3d0/1f2937?text=Book+Cover" alt="Book Cover" class="rounded-lg shadow-md mx-auto mb-4 w-full">
+                                    <h3 class="font-bold text-lg">Prophetic Mantle</h3>
+                                    <p class="text-sm text-gray-500">Anthony Darko</p>
+                                </a>
+                            </div>
+                             <div class="card text-center">
+                                <a href="https://www.your-google-drive-link-for-book6.com" target="_blank">
+                                    <img src="https://placehold.co/300x400/a7f3d0/1f2937?text=Book+Cover" alt="Book Cover" class="rounded-lg shadow-md mx-auto mb-4 w-full">
+                                    <h3 class="font-bold text-lg">End-Time Army</h3>
+                                    <p class="text-sm text-gray-500">Anthony Darko</p>
+                                </a>
+                            </div>
+                        </div>
+                         <div class="mt-12 text-center">
+                            <h3 class="text-xl font-bold">How to Upload Books</h3>
+                            <p class="text-gray-600 max-w-2xl mx-auto mt-2">To add books to the library, upload the PDF files to a folder in your Google Drive, get a shareable link for each book, and then update the `href` attribute in the HTML for each book item.</p>
+                        </div>
+                    </div>
+                </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-4 uppercase">ANTHONY DARKO MINISTRIES</h3>
+                    <p class="text-gray-400 text-sm uppercase">Spirit Generation Church (BETH ELOHIM)</p>
+                     <div class="mt-4 text-sm">
+                        <p class="text-gray-400">Email: anthonydarkoministries@gmail.com</p>
+                        <p class="text-gray-400">Contact: +27 67 797 9198</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Navigate</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="nav-trigger text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#about" class="nav-trigger text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#events" class="nav-trigger text-gray-400 hover:text-white">Events</a></li>
+                        <li><a href="#give" class="nav-trigger text-gray-400 hover:text-white">Give</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Get Involved</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#join" class="nav-trigger text-gray-400 hover:text-white">Become a Member</a></li>
+                        <li><a href="#partnership" class="nav-trigger text-gray-400 hover:text-white">Partnership</a></li>
+                        <li><a href="#prayer" class="nav-trigger text-gray-400 hover:text-white">Prayer Request</a></li>
+                        <li><a href="#discipleship" class="nav-trigger text-gray-400 hover:text-white">Discipleship</a></li>
+                         <li><a href="#foundation" class="nav-trigger text-gray-400 hover:text-white">Foundation</a></li>
+                         <li><a href="#library" class="nav-trigger text-gray-400 hover:text-white">Library</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Connect With Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4 text-2xl">
+                        <a href="https://www.tiktok.com/@agabusdaprophet" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/AnthonyDarkoMinistries" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/anthony_darkomisitries" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@anthonydarkoministries" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/27677979198" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-sm">
+                <p>© 2025 ANTHONY DARKO MINISTRIES. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="submission-modal" class="modal fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
+            <div id="modal-content">
+                </div>
+            <button id="modal-close-btn" class="hidden mt-6 bg-teal-600 text-white font-bold py-2 px-8 rounded-lg hover:bg-teal-700 transition-colors">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Your Google Apps Script Web App URL
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyA0PI6WKGPvu5NBl7qb5UC_AuRC6jxqxU8W1aLuPr_H744CSTlOnHyKgzEInMcGbJb/exec'; 
+
+            const pages = document.querySelectorAll('.page');
+            const navTriggers = document.querySelectorAll('.nav-trigger');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const modal = document.getElementById('submission-modal');
+            const modalContent = document.getElementById('modal-content');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            
+            let activeForm = null;
+
+            // --- Page Navigation ---
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+                navLinks.forEach(link => {
+                    const linkPageId = link.getAttribute('href').substring(1);
+                    link.classList.toggle('active', linkPageId === pageId);
+                });
+                mobileMenu.classList.add('hidden');
+                window.scrollTo(0, 0);
+                if(history.pushState) {
+                    history.pushState(null, null, `#${pageId}`);
+                } else {
+                    location.hash = pageId;
+                }
+            }
+
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = trigger.getAttribute('href').substring(1);
+                    showPage(pageId);
+                });
+            });
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            
+            // --- Modal Controls ---
+            function showModal(content) {
+                modalContent.innerHTML = content;
+                modal.classList.remove('hidden');
+            }
+
+            function hideModal() {
+                modal.classList.add('hidden');
+                if (activeForm) {
+                    const formDisplay = window.getComputedStyle(activeForm).display;
+                    if (formDisplay === 'none') {
+                         if (activeForm.id.includes('form')) {
+                            activeForm.style.display = 'block'; 
+                         }
+                    }
+                    activeForm.reset();
+                    activeForm = null;
+                }
+                modalCloseBtn.classList.add('hidden');
+            }
+            
+            modalCloseBtn.addEventListener('click', hideModal);
+            
+            // --- Email Templates ---
+            const emailTemplates = {
+                newMember: (name) => ({
+                    subject: "Welcome to the ANTHONY DARKO MINISTRIES Family!",
+                    body: `Dear ${name},<br><br>Welcome to the Spirit Generation family! We are excited to walk with you in your journey of faith. As a member, you’ll receive ministry updates, prayer support, and opportunities to serve and grow spiritually.<br><br>We encourage you to stay connected through our services, events, and online platforms.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES<br>SPIRIT GENERATION CHURCH (BETH ELOHIM)`
+                }),
+                partnership: (name, level) => {
+                    const levels = {
+                        MAN: { subject: "Thank You for Partnering with Us – MAN Level", body: `Your covenant commitment at the MAN level is a blessing to the work of the Gospel. Your giving helps us reach more souls, disciple believers, and prepare the Bride of Christ for His return.` },
+                        LION: { subject: "Welcome to the LION Level Partnership", body: `We are honored to welcome you as a Kingdom Finance Partner at the LION level. Your sacrifice enables us to expand ministry impact and touch lives globally.` },
+                        OX: { subject: "Welcome to the OX Level Partnership", body: `Thank you for stepping into covenant partnership with us at the OX level. Your giving fuels Kingdom work and demonstrates your heart for the harvest. We pray for open heavens and divine favor over your life.` },
+                        EAGLE: { subject: "Welcome to the EAGLE Level Partnership", body: `It is with great joy that we welcome you to the EAGLE level partnership. Your commitment soars high above challenges to empower ministry and outreach. Thank you for flying with us in Kingdom purpose.` }
+                    };
+                    const paymentDetails = `<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko`;
+                    
+                    return {
+                        subject: levels[level].subject,
+                        body: `Dear ${name},<br><br>${levels[level].body}${paymentDetails}<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
+                    };
+                },
+                angels: (name) => ({
+                    subject: "Welcome to Angels on Assignment Partnership",
+                    body: `Dear ${name},<br><br>Thank you for joining “Angels on Assignment.” Your giving provides care, hope, and practical support to widows, orphans, and the less privileged.<br><br>Please use the reference "Angels" when giving.<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko<br><br>May God multiply your seed and reward your compassion.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
+                }),
+                foundation: (name) => ({
+                    subject: "Welcome to the My Daughter My Child Foundation Family",
+                    body: `Dear ${name},<br><br>We are grateful for your heart to partner with the My Daughter My Child Foundation. Your support empowers girls aged 5–18 through mentorship, education, and spiritual guidance.<br><br>Please use the reference "Foundation" when giving.<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko<br><br>Together, we are shaping a brighter future.<br><br>With Gratitude,<br>ANTHONY DARKO MINISTRIES`
+                }),
+            };
+
+            // --- Correct Form Submission Logic ---
+            async function handleFormSubmit(formId) {
+                const form = document.getElementById(formId);
+                if (!form) return;
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    activeForm = form;
+                    
+                    form.style.display = 'none';
+                    showModal('<div class="loader"></div><p>Submitting, please wait...</p>');
+
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+                    
+                    const name = `${data.firstName || ''} ${data.surname || ''}`.trim() || 'Friend';
+                    let emailData;
+
+                    if (formId === 'join-form') {
+                        emailData = emailTemplates.newMember(name);
+                    } else if (formId === 'partnership-form') {
+                        const level = data.partnershipLevel;
+                        if (level) {
+                           emailData = emailTemplates.partnership(name, level);
+                        }
+                    } else if (formId === 'giving-form') {
+                        if (data.givingType === 'Angels on Assignment') {
+                            emailData = emailTemplates.angels(name);
+                        } else if (data.givingType === 'Foundation Donation') {
+                            emailData = emailTemplates.foundation(name);
+                        }
+                    }
+
+                    try {
+                        const payload = {
+                            recipientEmail: data.email,
+                            recipientName: name,
+                            adminEmail: "anthonydarkoministries@gmail.com",
+                            emailTemplate: emailData,
+                            formData: data,
+                        };
+
+                        const response = await fetch(SCRIPT_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`Server responded with status: ${response.status}`);
+                        }
+                        
+                        const successMessage = `
+                            <i class="fas fa-check-circle fa-4x text-green-500 mb-4"></i>
+                            <h3 class="font-bold text-2xl text-gray-800">Submission Successful!</h3>
+                            <p class="mt-2 text-gray-600">Thank you, ${name}. Your submission has been received and you will receive a confirmation email shortly.</p>
+                        `;
+                        showModal(successMessage);
+
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        const errorMessage = `
+                            <i class="fas fa-times-circle fa-4x text-red-500 mb-4"></i>
+                            <h3 class="font-bold text-2xl text-gray-800">Submission Failed</h3>
+                            <p class="mt-2 text-gray-600">There was an error. Please try again or contact us at anthonydarkoministries@gmail.com.</p>
+                        `;
+                        showModal(errorMessage);
+                    } finally {
+                       modalCloseBtn.classList.remove('hidden');
+                    }
+                });
+            }
+            
+            ['join-form', 'prayer-form', 'discipleship-form', 'giving-form', 'partnership-form'].forEach(handleFormSubmit);
+
+            // --- Partnership Form Specific Logic ---
+            const partnershipForm = document.getElementById('partnership-form');
+            if (partnershipForm) {
+                 const partnershipLevels = document.getElementById('partnership-levels');
+                const partnerCards = partnershipLevels.querySelectorAll('.card');
+                const manAmountContainer = document.getElementById('man-amount-container');
+                const partnershipLevelInput = document.getElementById('partnershipLevelInput');
+
+                partnerCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        partnerCards.forEach(c => c.classList.remove('selected-card'));
+                        card.classList.add('selected-card');
+                        const level = card.dataset.level;
+                        partnershipLevelInput.value = level;
+                        manAmountContainer.classList.toggle('hidden', level !== 'MAN');
+                    });
+                });
+            }
+            
+            // Set partnership date to today
+            const pDateInput = document.getElementById('p-date');
+            if(pDateInput) {
+                pDateInput.valueAsDate = new Date();
+            }
+
+            // Show initial page based on hash or default to home
+            const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
+            if (document.getElementById(initialPage)) {
+                 showPage(initialPage);
+            } else {
+                 showPage('home');
+            }
+        });
+    </script>
+</body>
+</html>
