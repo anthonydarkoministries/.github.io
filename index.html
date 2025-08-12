@@ -482,25 +482,28 @@
                                 </div>
                             </div>
 
-                            <div>
+                           <div>
                                 <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">2. Choose Your Partnership Level</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="partnership-levels">
-                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="MAN" data-amount="500-1000 ZAR / 26-52 USD">
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="MAN" data-amount="500-5000 ZAR / 30-300 USD">
                                         <h4 class="text-2xl font-bold text-gray-800">MAN</h4>
-                                        <p class="text-gray-500 my-4 text-sm">R500 - R1,000 / $26 - $52 USD</p>
-                                        <p class="text-xs text-gray-500">Give according to your ability.</p>
+                                        <p class="text-grey-600 my-4 text-sm">R500 - R5,000 / $30 - $300 USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
                                     </div>
-                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="LION" data-amount="5000 ZAR / 263 USD">
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="LION" data-amount="5000 - 7000 ZAR / 300-500 USD">
                                         <h4 class="text-2xl font-bold text-amber-600">LION</h4>
-                                        <p class="text-gray-500 my-4 text-sm">R 5,000 / $263 USD</p>
+                                        <p class="text-amber-800 my-4 text-sm">R 5,000 - R 7,000 / $300 - $500 USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
                                     </div>
-                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="OX" data-amount="7000 ZAR / 368 USD">
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="OX" data-amount="7000-14000 ZAR / 500-800 USD">
                                         <h4 class="text-2xl font-bold text-red-700">OX</h4>
-                                        <p class="text-gray-500 my-4 text-sm">R 7,000 / $368 USD</p>
+                                        <p class="text-red-500 my-4 text-sm">R 7,000 - R 14,000 / $500 - $800 USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
                                     </div>
-                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="EAGLE" data-amount="14000 ZAR / 737 USD">
+                                    <div class="card p-6 border-2 border-gray-200 rounded-lg text-center cursor-pointer" data-level="EAGLE" data-amount="14000 ZAR / 800-1000+ USD">
                                         <h4 class="text-2xl font-bold text-indigo-600">EAGLE</h4>
-                                        <p class="text-gray-500 my-4 text-sm">R 14,000 / $737 USD</p>
+                                        <p class="text-indigo-500 my-4 text-sm">R 14,000 - R 17,000 / $800 - $1000+ USD</p>
+                                        <p class="text-xs text-gray-800">Give according to your ability.</p>
                                     </div>
                                 </div>
                                 <input type="hidden" name="partnershipLevel" id="partnershipLevelInput">
@@ -794,7 +797,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // --- IMPORTANT ---
             // Remember to replace this with your own new Google Apps Script Web App URL
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3qfhWxUFFRhW5hBgsAgcya9mqFf3pl2vlm2K6lyRH3ySysym3XkAe0maGTQDmBJD0/exec'; // REPLACE WITH YOUR URL
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRqMSXw2gYBD3EcTnX53LC7fO_frGs33WjBKYhURCstnd4Jgs6hEcQ6nkv_vdGggBW/exec'; // REPLACE WITH YOUR URL
 
             const pages = document.querySelectorAll('.page');
             const navTriggers = document.querySelectorAll('.nav-trigger');
@@ -1007,3 +1010,4 @@
     </script>
 </body>
 </html>
+
