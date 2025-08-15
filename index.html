@@ -795,139 +795,71 @@
 
 
    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        const pages = document.querySelectorAll('.page');
-        const navTriggers = document.querySelectorAll('.nav-trigger');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const modal = document.getElementById('submission-modal');
-        const modalContent = document.getElementById('modal-content');
-        const modalCloseBtn = document.getElementById('modal-close-btn');
-        
-        let activeForm = null;
+function submitForm(event, form) {
+    event.preventDefault();
 
-        function showPage(pageId) {
-            pages.forEach(page => page.classList.toggle('active', page.id === pageId));
-            navLinks.forEach(link => {
-                const linkPageId = link.getAttribute('href').substring(1);
-                link.classList.toggle('active', linkPageId === pageId);
-            });
-            mobileMenu.classList.add('hidden');
-            window.scrollTo(0, 0);
-            if(history.pushState) {
-                history.pushState(null, null, `#${pageId}`);
-            } else {
-                location.hash = pageId;
-            }
-        }
-
-        navTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = trigger.getAttribute('href').substring(1);
-                showPage(pageId);
-            });
-        });
-
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        
-        function showModal(content) {
-            modalContent.innerHTML = content;
-            modal.classList.remove('hidden');
-            modalCloseBtn.classList.remove('hidden');
-        }
-
-        function hideModal() {
-            modal.classList.add('hidden');
-            if (activeForm) {
-                activeForm.reset();
-                activeForm = null;
-            }
-        }
-        
-        modalCloseBtn.addEventListener('click', hideModal);
-        
-        // --- Form Submission Logic ---
-        async function handleFormSubmit(formId) {
-            const form = document.getElementById(formId);
-            if (!form) return;
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                activeForm = form;
-                
-                showModal('<div class="loader"></div><p>Submitting, please wait...</p>');
-
-                const formData = new FormData(form);
-                const urlEncodedData = new URLSearchParams(formData);
-
-                try {
-                    const response = await fetch(SCRIPT_URL, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: urlEncodedData.toString()
-                    });
-
-                    if (response.ok) {
-                        const successMessage = `
-                            <i class="fas fa-check-circle fa-4x text-green-500 mb-4"></i>
-                            <h3 class="font-bold text-2xl text-gray-800">Submission Successful!</h3>
-                            <p class="mt-2 text-gray-600">Thank you. Your submission has been received and you will receive a confirmation email shortly.</p>
-                        `;
-                        showModal(successMessage);
-                    } else {
-                        throw new Error('Server responded with an error.');
-                    }
-                } catch (error) {
-                    console.error('Error submitting form:', error);
-                    const errorMessage = `
-                        <i class="fas fa-times-circle fa-4x text-red-500 mb-4"></i>
-                        <h3 class="font-bold text-2xl text-gray-800">Submission Failed</h3>
-                        <p class="mt-2 text-gray-600">There was an error. Please try again or contact us at anthonydarkoministries@gmail.com.</p>
-                    `;
-                    showModal(errorMessage);
-                }
-            });
-        }
-        
-        ['join-form', 'prayer-form', 'discipleship-form', 'giving-form', 'partnership-form'].forEach(handleFormSubmit);
-
-        // --- Partnership Form Specific Logic ---
-        const partnershipForm = document.getElementById('partnership-form');
-        if (partnershipForm) {
-            const partnershipLevels = document.getElementById('partnership-levels');
-            const partnerCards = partnershipLevels.querySelectorAll('.card');
-            const manAmountContainer = document.getElementById('man-amount-container');
-            const partnershipLevelInput = document.getElementById('partnershipLevelInput');
-
-            partnerCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    partnerCards.forEach(c => c.classList.remove('selected-card'));
-                    card.classList.add('selected-card');
-                    const level = card.dataset.level;
-                    partnershipLevelInput.value = level;
-                    manAmountContainer.classList.toggle('hidden', level !== 'MAN');
-                });
-            });
-        }
-        
-        const pDateInput = document.getElementById('p-date');
-        if(pDateInput) {
-            pDateInput.valueAsDate = new Date();
-        }
-
-        const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
-        if (document.getElementById(initialPage)) {
-            showPage(initialPage);
-        } else {
-            showPage('home');
-        }
+    const formData = {};
+    const elements = form.querySelectorAll("input, select, textarea");
+    elements.forEach(el => {
+        if (el.name) formData[el.name] = el.value;
     });
+
+    fetch(form.action, {
+        method: "POST",
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert("Form submitted successfully!");
+        form.reset();
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("There was an error submitting your form.");
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pages = document.querySelectorAll('.page');
+    const navTriggers = document.querySelectorAll('.nav-trigger');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function showPage(pageId) {
+        pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+        navLinks.forEach(link => {
+            const linkPageId = link.getAttribute('href').substring(1);
+            link.classList.toggle('active', linkPageId === pageId);
+        });
+        mobileMenu.classList.add('hidden');
+        window.scrollTo(0, 0);
+        if(history.pushState) {
+            history.pushState(null, null, `#${pageId}`);
+        } else {
+            location.hash = pageId;
+        }
+    }
+
+    navTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pageId = trigger.getAttribute('href').substring(1);
+            showPage(pageId);
+        });
+    });
+
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
+    if (document.getElementById(initialPage)) {
+        showPage(initialPage);
+    } else {
+        showPage('home');
+    }
+});
 </script>
 </body>
 
 </html>
+
