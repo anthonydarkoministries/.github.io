@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/src/index.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -394,30 +395,30 @@
                             <h2 class="text-4xl font-serif font-bold text-teal-700">Become a Member</h2>
                             <p class="mt-2 text-gray-600">Join the Spirit Generation family today!</p>
                         </div>
-                        <form id="join-form" class="space-y-6">
+                        <form id="join-form" class="space-y-6" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
                             <input type="hidden" name="form-type" value="New Membership">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="join-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="join-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="join-First-Name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label for="join-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                    <input type="text" id="join-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="join-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                             </div>
                              <div>
                                 <label for="join-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" id="join-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="email" id="join-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div>
                                 <label for="join-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="join-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="tel" id="join-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="join-marital-status" class="block text-sm font-medium text-gray-700 mb-1">Marital Status</label>
-                                    <select id="join-marital-status" name="maritalStatus" class="w-full p-3 border bg-white border-gray-300 rounded-md">
+                                    <select id="join-Marital-Status" name="MaritalStatus" class="w-full p-3 border bg-white border-gray-300 rounded-md">
                                         <option>Single</option>
                                         <option>Married</option>
                                         <option>Other</option>
@@ -425,12 +426,12 @@
                                 </div>
                                 <div>
                                     <label for="join-kids" class="block text-sm font-medium text-gray-700 mb-1">Number of Children</label>
-                                    <input type="number" id="join-kids" name="numberOfChildren" class="w-full p-3 border border-gray-300 rounded-md" min="0">
+                                    <input type="number" id="join-kids" name="NumberOfChildren" class="w-full p-3 border border-gray-300 rounded-md" min="0">
                                 </div>
                             </div>
                              <div>
                                 <label for="join-kids-names" class="block text-sm font-medium text-gray-700 mb-1">Children's Names (if any)</label>
-                                <textarea id="join-kids-names" name="childrensNames" rows="2" class="w-full p-3 border border-gray-300 rounded-md"></textarea>
+                                <textarea id="join-kids-names" name="ChildrensNames" rows="2" class="w-full p-3 border border-gray-300 rounded-md"></textarea>
                             </div>
                             <div>
                                 <label for="join-prayer-request" class="block text-sm font-medium text-gray-700 mb-1">Prayer Request</label>
@@ -458,26 +459,26 @@
                             <p class="text-md font-semibold text-gray-600 mt-2">- Psalm 50:5 (KJV)</p>
                         </div>
 
-                        <form id="partnership-form">
+                        <form id="partnership-form" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
                             <input type="hidden" name="form-type" value="Partnership Commitment">
                             <div class="mb-8">
                                 <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-6">1. Your Information</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label for="p-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                        <input type="text" id="p-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="text" id="p-First-name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label for="p-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                        <input type="text" id="p-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="text" id="p-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label for="p-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                        <input type="email" id="p-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="email" id="p-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label for="p-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <input type="tel" id="p-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="tel" id="p-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                 </div>
                             </div>
@@ -563,29 +564,29 @@
                             <h2 class="text-4xl font-serif font-bold text-blue-700">Prayer Request</h2>
                             <p class="mt-2 text-gray-600">"The effectual fervent prayer of a righteous man availeth much." - James 5:16</p>
                         </div>
-                        <form id="prayer-form" class="space-y-6">
+                        <form id="prayer-form" class="space-y-6" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
                              <input type="hidden" name="form-type" value="Prayer Request">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="prayer-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="prayer-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="prayer-First-name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label for="prayer-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                    <input type="text" id="prayer-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="prayer-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                             </div>
                             <div>
                                 <label for="prayer-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" id="prayer-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="email" id="prayer-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                              <div>
                                 <label for="prayer-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="prayer-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="tel" id="prayer-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div>
                                 <label for="prayer-request" class="block text-sm font-medium text-gray-700 mb-1">Your Request</label>
-                                <textarea id="prayer-request" name="request" rows="5" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Share your prayer needs with us..."></textarea>
+                                <textarea id="prayer-Request" name="Request" rows="5" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Share your prayer needs with us..."></textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn-primary font-bold py-3 px-12 rounded-lg">Submit Request</button>
@@ -604,25 +605,25 @@
                             <h2 class="text-4xl font-serif font-bold text-purple-700">Discipleship & Mentorship</h2>
                             <p class="mt-2 text-gray-600">Sign up to grow deeper in the Word and your calling.</p>
                         </div>
-                        <form id="discipleship-form" class="space-y-6">
+                        <form id="discipleship-form" class="space-y-6" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
                             <input type="hidden" name="form-type" value="Discipleship Sign-up">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="d-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="d-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="d-First-name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label for="d-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                    <input type="text" id="d-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="d-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                             </div>
                             <div>
                                 <label for="d-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" id="d-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="email" id="d-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                              <div>
                                 <label for="d-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="d-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="tel" id="d-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div>
                                 <label for="d-interest" class="block text-sm font-medium text-gray-700 mb-1">Area of Interest</label>
@@ -657,6 +658,7 @@
                             <img src="https://placehold.co/400x300/f472b6/4a5568?text=Foundation+Event+2" alt="Foundation Event 2" class="rounded-lg shadow-md w-full h-full object-cover">
                             <img src="https://placehold.co/400x300/ec4899/4a5568?text=Foundation+Event+3" alt="Foundation Event 3" class="rounded-lg shadow-md w-full h-full object-cover">
                         </div>
+
                         <div class="mt-12 text-center">
                             <h3 class="text-2xl font-bold mb-4">Support the Foundation</h3>
                             <p class="text-gray-600 mb-6">To give specifically to the foundation, please use the ministry's giving channels and add the reference <strong class="text-pink-600">"Foundation"</strong>.</p>
@@ -793,187 +795,69 @@
 
 
    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- IMPORTANT ---
-        // Paste your new Google Apps Script Web App URL here
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec'; 
+function submitForm(event, form) {
+    event.preventDefault();
 
-        const pages = document.querySelectorAll('.page');
-        const navTriggers = document.querySelectorAll('.nav-trigger');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const modal = document.getElementById('submission-modal');
-        const modalContent = document.getElementById('modal-content');
-        const modalCloseBtn = document.getElementById('modal-close-btn');
-        
-        let activeForm = null;
-
-        // Page Navigation
-        function showPage(pageId) {
-            pages.forEach(page => page.classList.toggle('active', page.id === pageId));
-            navLinks.forEach(link => {
-                const linkPageId = link.getAttribute('href').substring(1);
-                link.classList.toggle('active', linkPageId === pageId);
-            });
-            mobileMenu.classList.add('hidden');
-            window.scrollTo(0, 0);
-            if(history.pushState) {
-                history.pushState(null, null, `#${pageId}`);
-            } else {
-                location.hash = pageId;
-            }
-        }
-
-        navTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = trigger.getAttribute('href').substring(1);
-                showPage(pageId);
-            });
-        });
-
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        // Modal Controls
-        function showModal(content) {
-            modalContent.innerHTML = content;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideModal() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            if (activeForm) {
-                // This makes the form reappear after the modal closes
-                if (activeForm.style.display === 'none') {
-                    // Check parent to restore correct display property if needed
-                    const parentDisplay = window.getComputedStyle(activeForm.parentElement).display;
-                    if (parentDisplay === 'grid') {
-                         activeForm.style.display = 'grid';
-                    } else if (parentDisplay === 'flex') {
-                         activeForm.style.display = 'flex';
-                    } else {
-                         activeForm.style.display = 'block';
-                    }
-                }
-                activeForm.reset();
-                activeForm = null;
-            }
-            modalCloseBtn.classList.add('hidden');
-        }
-        
-        modalCloseBtn.addEventListener('click', hideModal);
-        
-        // Email Templates (Simplified for this example, expand as needed)
-        const emailTemplates = {
-            newMember: (name) => ({
-                subject: "Welcome to the ANTHONY DARKO MINISTRIES Family!",
-                body: `Dear ${name},<br><br>Welcome to the Spirit Generation family! We are excited to walk with you in your journey of faith.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
-            }),
-            partnership: (name, level) => ({
-                subject: `Thank You for Your ${level} Level Partnership!`,
-                body: `Dear ${name},<br><br>We are honored to welcome you as a Kingdom Finance Partner at the ${level} level. Your sacrifice enables us to expand ministry impact and touch lives globally.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
-            }),
-        };
-
-        // Form Submission Logic
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            activeForm = form;
-            
-            // Show loading spinner in modal
-            showModal('<div class="loader"></div><p>Submitting, please wait...</p>');
-            form.style.display = 'none'; // Hide the form
-
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            
-            const name = `${data.firstName || ''} ${data.surname || ''}`.trim() || 'Friend';
-            let emailData; // This will hold the email template
-
-            // Determine which email template to use based on the form's ID
-            if (form.id === 'join-form') {
-                emailData = emailTemplates.newMember(name);
-            } else if (form.id === 'partnership-form') {
-                const level = data.partnershipLevel || "MAN";
-                emailData = emailTemplates.partnership(name, level);
-            }
-            // Add more `else if` blocks for other forms like prayer, discipleship etc. if they need unique emails
-
-            try {
-                const payload = {
-                    recipientEmail: data.email,
-                    recipientName: name,
-                    emailTemplate: emailData,
-                    formData: data,
-                };
-
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload),
-                });
-
-                if (response.ok) {
-                    const successMessage = `
-                        <i class="fas fa-check-circle fa-4x text-green-500 mb-4"></i>
-                        <h3 class="font-bold text-2xl text-gray-800">Submission Successful!</h3>
-                        <p class="mt-2 text-gray-600">Thank you, ${name}. Your submission has been received. You will receive a confirmation email shortly.</p>
-                    `;
-                    showModal(successMessage);
-                } else {
-                    throw new Error('Server responded with an error.');
-                }
-
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                const errorMessage = `
-                    <i class="fas fa-times-circle fa-4x text-red-500 mb-4"></i>
-                    <h3 class="font-bold text-2xl text-gray-800">Submission Failed</h3>
-                    <p class="mt-2 text-gray-600">There was an error. Please try again or contact us at anthonydarkoministries@gmail.com.</p>
-                `;
-                showModal(errorMessage);
-            } finally {
-               modalCloseBtn.classList.remove('hidden');
-            }
-        }
-        
-        // Attach the handler to all forms
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', handleFormSubmit);
-        });
-
-        // Partnership Form Specific Logic
-        const partnershipLevels = document.getElementById('partnership-levels');
-        if (partnershipLevels) {
-            const partnerCards = partnershipLevels.querySelectorAll('.card');
-            const partnershipLevelInput = document.getElementById('partnershipLevelInput');
-            partnerCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    partnerCards.forEach(c => c.classList.remove('selected-card'));
-                    card.classList.add('selected-card');
-                    partnershipLevelInput.value = card.dataset.level;
-                });
-            });
-        }
-        
-        // Set partnership date to today
-        const pDateInput = document.getElementById('p-date');
-        if(pDateInput) {
-            pDateInput.valueAsDate = new Date();
-        }
-
-        // Show initial page
-        const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
-        if (document.getElementById(initialPage)) {
-             showPage(initialPage);
-        } else {
-             showPage('home');
-        }
+    const formData = {};
+    const elements = form.querySelectorAll("input, select, textarea");
+    elements.forEach(el => {
+        if (el.name) formData[el.name] = el.value;
     });
+
+    fetch(form.action, {
+        method: "POST",
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert("Form submitted successfully!");
+        form.reset();
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("There was an error submitting your form.");
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pages = document.querySelectorAll('.page');
+    const navTriggers = document.querySelectorAll('.nav-trigger');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function showPage(pageId) {
+        pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+        navLinks.forEach(link => {
+            const linkPageId = link.getAttribute('href').substring(1);
+            link.classList.toggle('active', linkPageId === pageId);
+        });
+        mobileMenu.classList.add('hidden');
+        window.scrollTo(0, 0);
+        if(history.pushState) {
+            history.pushState(null, null, `#${pageId}`);
+        } else {
+            location.hash = pageId;
+        }
+    }
+
+    navTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pageId = trigger.getAttribute('href').substring(1);
+            showPage(pageId);
+        });
+    });
+
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
+    if (document.getElementById(initialPage)) {
+        showPage(initialPage);
+    } else {
+        showPage('home');
+    }
+});
 </script>
 </body>
 </html>
