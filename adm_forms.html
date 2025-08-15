@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ADM Forms</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    form { border: 1px solid #ccc; padding: 20px; margin-bottom: 30px; }
+    h2 { background: #f4f4f4; padding: 10px; }
+    label { display: block; margin-top: 10px; }
+    input, select { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 15px; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; }
+    button:hover { background: #218838; }
+  </style>
+</head>
+<body>
+
+<h1>Anthony Darko Ministries Forms</h1>
+
+<!-- MEMBERSHIP FORM -->
+<form class="adm-form" data-form-type="New Membership">
+  <h2>New Membership</h2>
+  <label>First Name <input type="text" name="firstName" required></label>
+  <label>Surname <input type="text" name="surname" required></label>
+  <label>Email <input type="email" name="email" required></label>
+  <label>Phone <input type="text" name="phone"></label>
+  <button type="submit">Submit</button>
+</form>
+
+<!-- PRAYER REQUEST FORM -->
+<form class="adm-form" data-form-type="Prayer Request">
+  <h2>Prayer Request</h2>
+  <label>First Name <input type="text" name="firstName" required></label>
+  <label>Surname <input type="text" name="surname" required></label>
+  <label>Email <input type="email" name="email" required></label>
+  <label>Phone <input type="text" name="phone"></label>
+  <label>Prayer Request <input type="text" name="prayerDetails" required></label>
+  <button type="submit">Submit</button>
+</form>
+
+<!-- DISCIPLESHIP FORM -->
+<form class="adm-form" data-form-type="Discipleship Sign-up">
+  <h2>School of Discipleship</h2>
+  <label>First Name <input type="text" name="firstName" required></label>
+  <label>Surname <input type="text" name="surname" required></label>
+  <label>Email <input type="email" name="email" required></label>
+  <label>Phone <input type="text" name="phone"></label>
+  <button type="submit">Submit</button>
+</form>
+
+<!-- PARTNERSHIP FORM -->
+<form class="adm-form" data-form-type="Partnership Commitment">
+  <h2>Partnership Commitment</h2>
+  <label>First Name <input type="text" name="firstName" required></label>
+  <label>Surname <input type="text" name="surname" required></label>
+  <label>Email <input type="email" name="email" required></label>
+  <label>Phone <input type="text" name="phone"></label>
+  <label>Partnership Level <input type="text" name="partnershipLevel"></label>
+  <label>Frequency <input type="text" name="frequency"></label>
+  <label>Giving Day <input type="text" name="givingDay"></label>
+  <label>Pledge Date <input type="date" name="pledgeDate"></label>
+  <label>Amount <input type="number" name="amount"></label>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.querySelectorAll(".adm-form").forEach(form => {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formType = this.getAttribute("data-form-type");
+    const formData = new FormData(this);
+    formData.append("form-type", formType);
+
+    fetch("https://script.google.com/macros/s/AKfycbzIZELxmQ5OBLi372qBxYtq3XFRZuNiZhtoweWLX-K4mXOPjI2eqyPKtvCR-qoCpdWVjg/exec", { method: "POST", body: formData })
+      .then(res => res.json())
+      .then(data => alert(data.message))
+      .catch(err => console.error(err));
+  });
+});
+</script>
+
+</body>
+</html>
