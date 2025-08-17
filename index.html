@@ -84,7 +84,7 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#home" class="flex items-center space-x-3 nav-trigger">
-                        <img src="Logo.jpeg" alt="Logo" class="h-12 w-12 rounded-full">
+                        <img src="Logo.jpeg" alt="Logo" class="h-12 w-12 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/48x48/e2e8f0/4a5568?text=Logo';">
                         <div>
                             <span class="font-bold text-lg hidden sm:block text-gray-800 uppercase">ANTHONY DARKO MINISTRIES</span>
                             <span class="text-xs text-gray-500 hidden sm:block uppercase">SPIRIT GENERATION CHURCH (BETH ELOHIM)</span>
@@ -196,7 +196,7 @@
                              <div>
                                 <h3 class="text-2xl font-bold text-teal-700 mb-4">About the Founder</h3>
                                 <div class="flex flex-col md:flex-row items-center gap-8">
-                                    <img src="Founder Anthony Darko.jpeg" alt="Founder Anthony Darko" class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg flex-shrink-0">
+                                    <img src="Founder Anthony Darko.jpeg" alt="Founder Anthony Darko" class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/224x224/e2e8f0/4a5568?text=Founder';">
                                     <p class="text-gray-700 leading-relaxed text-center md:text-left">Anthony Darko is a humble and dedicated minister of the Gospel of God, called with an Apostolic and Prophetic mantle for this generation. Rooted in the Word of Truth — the gospel of our salvation as declared in Ephesians 1:13 — he believes deeply that all who hear and receive this message are sealed by the promised Holy Spirit. With a burning passion for the presence of God and a heart for His people, he labours tirelessly to see the Church walk in her true identity and power. He is a worshipper, a teacher, and a spiritual father, committed to raising up sons and daughters who will carry the fire of revival to the ends of the earth.</p>
                                 </div>
                             </div>
@@ -845,12 +845,8 @@
             function hideModal() {
                 modal.classList.add('hidden');
                 if (activeForm) {
-                    const formDisplay = window.getComputedStyle(activeForm).display;
-                    if (formDisplay === 'none') {
-                         if (activeForm.id.includes('form')) {
-                            activeForm.style.display = 'block'; 
-                         }
-                    }
+                    // Show the form again
+                    activeForm.style.display = '';
                     activeForm.reset();
                     activeForm = null;
                 }
@@ -859,110 +855,64 @@
             
             modalCloseBtn.addEventListener('click', hideModal);
             
-            // --- Email Templates ---
-            const emailTemplates = {
-                newMember: (name) => ({
-                    subject: "Welcome to the ANTHONY DARKO MINISTRIES Family!",
-                    body: `Dear ${name},<br><br>Welcome to the Spirit Generation family! We are excited to walk with you in your journey of faith. As a member, you’ll receive ministry updates, prayer support, and opportunities to serve and grow spiritually.<br><br>We encourage you to stay connected through our services, events, and online platforms.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES<br>SPIRIT GENERATION CHURCH (BETH ELOHIM)`
-                }),
-                partnership: (name, level) => {
-                    const levels = {
-                        MAN: { subject: "Thank You for Partnering with Us – MAN Level", body: `Your covenant commitment at the MAN level is a blessing to the work of the Gospel. Your giving helps us reach more souls, disciple believers, and prepare the Bride of Christ for His return.` },
-                        LION: { subject: "Welcome to the LION Level Partnership", body: `We are honored to welcome you as a Kingdom Finance Partner at the LION level. Your sacrifice enables us to expand ministry impact and touch lives globally.` },
-                        OX: { subject: "Welcome to the OX Level Partnership", body: `Thank you for stepping into covenant partnership with us at the OX level. Your giving fuels Kingdom work and demonstrates your heart for the harvest. We pray for open heavens and divine favor over your life.` },
-                        EAGLE: { subject: "Welcome to the EAGLE Level Partnership", body: `It is with great joy that we welcome you to the EAGLE level partnership. Your commitment soars high above challenges to empower ministry and outreach. Thank you for flying with us in Kingdom purpose.` }
-                    };
-                    const paymentDetails = `<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko`;
+            // --- Form Submission Logic ---
+            async function handleFormSubmit(e) {
+                e.preventDefault();
+                const form = e.target;
+                activeForm = form;
+                
+                // Hide the form and show the loader
+                form.style.display = 'none';
+                showModal('<div class="loader"></div><p>Submitting, please wait...</p>');
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                const name = `${data.firstName || ''} ${data.surname || ''}`.trim() || 'Friend';
+
+                try {
+                    // Send the data to the Google Apps Script
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        // No 'mode' or 'headers' needed here for this simple POST
+                        // as the Apps Script is now set up to handle it.
+                        body: JSON.stringify(data)
+                    });
                     
-                    return {
-                        subject: levels[level].subject,
-                        body: `Dear ${name},<br><br>${levels[level].body}${paymentDetails}<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
-                    };
-                },
-                angels: (name) => ({
-                    subject: "Welcome to Angels on Assignment Partnership",
-                    body: `Dear ${name},<br><br>Thank you for joining “Angels on Assignment.” Your giving provides care, hope, and practical support to widows, orphans, and the less privileged.<br><br>Please use the reference "Angels" when giving.<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko<br><br>May God multiply your seed and reward your compassion.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
-                }),
-                foundation: (name) => ({
-                    subject: "Welcome to the My Daughter My Child Foundation Family",
-                    body: `Dear ${name},<br><br>We are grateful for your heart to partner with the My Daughter My Child Foundation. Your support empowers girls aged 5–18 through mentorship, education, and spiritual guidance.<br><br>Please use the reference "Foundation" when giving.<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko<br><br>Together, we are shaping a brighter future.<br><br>With Gratitude,<br>ANTHONY DARKO MINISTRIES`
-                }),
-            };
+                    // Since the Apps script now handles CORS, we expect a proper response
+                    const result = await response.json();
 
-            // --- Correct Form Submission Logic ---
-            async function handleFormSubmit(formId) {
-                const form = document.getElementById(formId);
-                if (!form) return;
-
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    activeForm = form;
-                    
-                    form.style.display = 'none';
-                    showModal('<div class="loader"></div><p>Submitting, please wait...</p>');
-
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData.entries());
-                    
-                    const name = `${data.firstName || ''} ${data.surname || ''}`.trim() || 'Friend';
-                    let emailData;
-
-                    if (formId === 'join-form') {
-                        emailData = emailTemplates.newMember(name);
-                    } else if (formId === 'partnership-form') {
-                        const level = data.partnershipLevel;
-                        if (level) {
-                           emailData = emailTemplates.partnership(name, level);
-                        }
-                    } else if (formId === 'giving-form') {
-                        if (data.givingType === 'Angels on Assignment') {
-                            emailData = emailTemplates.angels(name);
-                        } else if (data.givingType === 'Foundation Donation') {
-                            emailData = emailTemplates.foundation(name);
-                        }
-                    }
-
-                    try {
-                        const payload = {
-                            recipientEmail: data.email,
-                            recipientName: name,
-                            adminEmail: "anthonydarkoministries@gmail.com",
-                            emailTemplate: emailData,
-                            formData: data,
-                        };
-
-                        const response = await fetch(SCRIPT_URL, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`Server responded with status: ${response.status}`);
-                        }
-                        
-                        const successMessage = `
+                    if (result.status === 'success') {
+                         const successMessage = `
                             <i class="fas fa-check-circle fa-4x text-green-500 mb-4"></i>
                             <h3 class="font-bold text-2xl text-gray-800">Submission Successful!</h3>
-                            <p class="mt-2 text-gray-600">Thank you, ${name}. Your submission has been received and you will receive a confirmation email shortly.</p>
+                            <p class="mt-2 text-gray-600">Thank you, ${name}. Your submission has been received.</p>
                         `;
                         showModal(successMessage);
-
-                    } catch (error) {
-                        console.error('Error submitting form:', error);
-                        const errorMessage = `
-                            <i class="fas fa-times-circle fa-4x text-red-500 mb-4"></i>
-                            <h3 class="font-bold text-2xl text-gray-800">Submission Failed</h3>
-                            <p class="mt-2 text-gray-600">There was an error. Please try again or contact us at anthonydarkoministries@gmail.com.</p>
-                        `;
-                        showModal(errorMessage);
-                    } finally {
-                       modalCloseBtn.classList.remove('hidden');
+                    } else {
+                        // Throw an error with the message from the script
+                        throw new Error(result.message || 'An unknown error occurred.');
                     }
-                });
+
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    const errorMessage = `
+                        <i class="fas fa-times-circle fa-4x text-red-500 mb-4"></i>
+                        <h3 class="font-bold text-2xl text-gray-800">Submission Failed</h3>
+                        <p class="mt-2 text-gray-600">There was an error. Please try again or contact us at anthonydarkoministries@gmail.com.</p>
+                    `;
+                    showModal(errorMessage);
+                } finally {
+                   modalCloseBtn.classList.remove('hidden');
+                }
             }
             
-            ['join-form', 'prayer-form', 'discipleship-form', 'giving-form', 'partnership-form'].forEach(handleFormSubmit);
+            // Attach the submit event listener to all forms
+            ['join-form', 'prayer-form', 'discipleship-form', 'giving-form', 'partnership-form'].forEach(formId => {
+                const form = document.getElementById(formId);
+                if (form) {
+                    form.addEventListener('submit', handleFormSubmit);
+                }
+            });
 
             // --- Partnership Form Specific Logic ---
             const partnershipForm = document.getElementById('partnership-form');
