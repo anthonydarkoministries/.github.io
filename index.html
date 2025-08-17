@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/src/index.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -198,7 +197,7 @@
                                 <h3 class="text-2xl font-bold text-teal-700 mb-4">About the Founder</h3>
                                 <div class="flex flex-col md:flex-row items-center gap-8">
                                     <img src="Founder Anthony Darko.jpeg" alt="Founder Anthony Darko" class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg flex-shrink-0">
-                                    <p class="text-gray-700 leading-relaxed text-center md:text-left">Anthony Darko is a humble and dedicated minister of the Gospel of God, called with an Apostolic and Prophetic mantle for this generation. Rooted in the Word of Truth — the gospel of our salvation as declared in Ephesians 1:13 — he believes deeply that all who hear and receive this message are sealed by the promised Holy Spirit. With a burning passion for the presence of God and a heart for His people, he labors tirelessly to see the Church walk in her true identity and power. He is a worshipper, a teacher, and a spiritual father, committed to raising up sons and daughters who will carry the fire of revival to the ends of the earth.</p>
+                                    <p class="text-gray-700 leading-relaxed text-center md:text-left">Anthony Darko is a humble and dedicated minister of the Gospel of God, called with an Apostolic and Prophetic mantle for this generation. Rooted in the Word of Truth — the gospel of our salvation as declared in Ephesians 1:13 — he believes deeply that all who hear and receive this message are sealed by the promised Holy Spirit. With a burning passion for the presence of God and a heart for His people, he labours tirelessly to see the Church walk in her true identity and power. He is a worshipper, a teacher, and a spiritual father, committed to raising up sons and daughters who will carry the fire of revival to the ends of the earth.</p>
                                 </div>
                             </div>
                         </div>
@@ -395,30 +394,30 @@
                             <h2 class="text-4xl font-serif font-bold text-teal-700">Become a Member</h2>
                             <p class="mt-2 text-gray-600">Join the Spirit Generation family today!</p>
                         </div>
-                        <form id="join-form" class="space-y-6" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
+                        <form id="join-form" class="space-y-6">
                             <input type="hidden" name="form-type" value="New Membership">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="join-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="join-First-Name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="join-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label for="join-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                    <input type="text" id="join-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="join-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                             </div>
                              <div>
                                 <label for="join-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" id="join-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="email" id="join-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div>
                                 <label for="join-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="join-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="tel" id="join-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="join-marital-status" class="block text-sm font-medium text-gray-700 mb-1">Marital Status</label>
-                                    <select id="join-Marital-Status" name="MaritalStatus" class="w-full p-3 border bg-white border-gray-300 rounded-md">
+                                    <select id="join-marital-status" name="maritalStatus" class="w-full p-3 border bg-white border-gray-300 rounded-md">
                                         <option>Single</option>
                                         <option>Married</option>
                                         <option>Other</option>
@@ -426,12 +425,12 @@
                                 </div>
                                 <div>
                                     <label for="join-kids" class="block text-sm font-medium text-gray-700 mb-1">Number of Children</label>
-                                    <input type="number" id="join-kids" name="NumberOfChildren" class="w-full p-3 border border-gray-300 rounded-md" min="0">
+                                    <input type="number" id="join-kids" name="numberOfChildren" class="w-full p-3 border border-gray-300 rounded-md" min="0">
                                 </div>
                             </div>
                              <div>
                                 <label for="join-kids-names" class="block text-sm font-medium text-gray-700 mb-1">Children's Names (if any)</label>
-                                <textarea id="join-kids-names" name="ChildrensNames" rows="2" class="w-full p-3 border border-gray-300 rounded-md"></textarea>
+                                <textarea id="join-kids-names" name="childrensNames" rows="2" class="w-full p-3 border border-gray-300 rounded-md"></textarea>
                             </div>
                             <div>
                                 <label for="join-prayer-request" class="block text-sm font-medium text-gray-700 mb-1">Prayer Request</label>
@@ -459,26 +458,26 @@
                             <p class="text-md font-semibold text-gray-600 mt-2">- Psalm 50:5 (KJV)</p>
                         </div>
 
-                        <form id="partnership-form" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
+                        <form id="partnership-form">
                             <input type="hidden" name="form-type" value="Partnership Commitment">
                             <div class="mb-8">
                                 <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-6">1. Your Information</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label for="p-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                        <input type="text" id="p-First-name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="text" id="p-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label for="p-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                        <input type="text" id="p-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="text" id="p-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label for="p-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                        <input type="email" id="p-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="email" id="p-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label for="p-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <input type="tel" id="p-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                        <input type="tel" id="p-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
                                     </div>
                                 </div>
                             </div>
@@ -564,29 +563,29 @@
                             <h2 class="text-4xl font-serif font-bold text-blue-700">Prayer Request</h2>
                             <p class="mt-2 text-gray-600">"The effectual fervent prayer of a righteous man availeth much." - James 5:16</p>
                         </div>
-                        <form id="prayer-form" class="space-y-6" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
+                        <form id="prayer-form" class="space-y-6">
                              <input type="hidden" name="form-type" value="Prayer Request">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="prayer-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="prayer-First-name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="prayer-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label for="prayer-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                    <input type="text" id="prayer-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="prayer-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                             </div>
                             <div>
                                 <label for="prayer-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" id="prayer-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="email" id="prayer-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                              <div>
                                 <label for="prayer-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="prayer-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="tel" id="prayer-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div>
                                 <label for="prayer-request" class="block text-sm font-medium text-gray-700 mb-1">Your Request</label>
-                                <textarea id="prayer-Request" name="Request" rows="5" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Share your prayer needs with us..."></textarea>
+                                <textarea id="prayer-request" name="request" rows="5" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Share your prayer needs with us..."></textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn-primary font-bold py-3 px-12 rounded-lg">Submit Request</button>
@@ -605,25 +604,25 @@
                             <h2 class="text-4xl font-serif font-bold text-purple-700">Discipleship & Mentorship</h2>
                             <p class="mt-2 text-gray-600">Sign up to grow deeper in the Word and your calling.</p>
                         </div>
-                        <form id="discipleship-form" class="space-y-6" action="https://script.google.com/macros/s/AKfycbyvlfVSIUt_K2ysIQ_r085KY83dky1QysnrEUOkc0gsYGtbYj-D0pj-G9MRqbRsqgvq/exec" method="POST" onsubmit="submitForm(event, this)">
+                        <form id="discipleship-form" class="space-y-6">
                             <input type="hidden" name="form-type" value="Discipleship Sign-up">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="d-first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="d-First-name" name="FirstName" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="d-first-name" name="firstName" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label for="d-surname" class="block text-sm font-medium text-gray-700 mb-1">Surname</label>
-                                    <input type="text" id="d-Surname" name="Surname" required class="w-full p-3 border border-gray-300 rounded-md">
+                                    <input type="text" id="d-surname" name="surname" required class="w-full p-3 border border-gray-300 rounded-md">
                                 </div>
                             </div>
                             <div>
                                 <label for="d-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" id="d-Email" name="Email" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="email" id="d-email" name="email" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                              <div>
                                 <label for="d-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="d-Phone" name="Phone" required class="w-full p-3 border border-gray-300 rounded-md">
+                                <input type="tel" id="d-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-md">
                             </div>
                             <div>
                                 <label for="d-interest" class="block text-sm font-medium text-gray-700 mb-1">Area of Interest</label>
@@ -780,7 +779,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-sm">
-                <p>&copy; 2025 ANTHONY DARKO MINISTRIES. All Rights Reserved.</p>
+                <p>© 2025 ANTHONY DARKO MINISTRIES. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -794,70 +793,210 @@
     </div>
 
 
-   <script>
-function submitForm(event, form) {
-    event.preventDefault();
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Your Google Apps Script Web App URL
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwoofYRlQAnhzJdpuo4V-32fh9X74-wJRL0OPMKKgWaYQK6LPXOmJw-3awdHbQogTWc/exec'; 
 
-    const formData = {};
-    const elements = form.querySelectorAll("input, select, textarea");
-    elements.forEach(el => {
-        if (el.name) formData[el.name] = el.value;
-    });
+            const pages = document.querySelectorAll('.page');
+            const navTriggers = document.querySelectorAll('.nav-trigger');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const modal = document.getElementById('submission-modal');
+            const modalContent = document.getElementById('modal-content');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            
+            let activeForm = null;
 
-    fetch(form.action, {
-        method: "POST",
-        body: JSON.stringify(formData)
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert("Form submitted successfully!");
-        form.reset();
-    })
-    .catch(err => {
-        console.error("Error:", err);
-        alert("There was an error submitting your form.");
-    });
-}
+            // --- Page Navigation ---
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+                navLinks.forEach(link => {
+                    const linkPageId = link.getAttribute('href').substring(1);
+                    link.classList.toggle('active', linkPageId === pageId);
+                });
+                mobileMenu.classList.add('hidden');
+                window.scrollTo(0, 0);
+                if(history.pushState) {
+                    history.pushState(null, null, `#${pageId}`);
+                } else {
+                    location.hash = pageId;
+                }
+            }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const pages = document.querySelectorAll('.page');
-    const navTriggers = document.querySelectorAll('.nav-trigger');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = trigger.getAttribute('href').substring(1);
+                    showPage(pageId);
+                });
+            });
 
-    function showPage(pageId) {
-        pages.forEach(page => page.classList.toggle('active', page.id === pageId));
-        navLinks.forEach(link => {
-            const linkPageId = link.getAttribute('href').substring(1);
-            link.classList.toggle('active', linkPageId === pageId);
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            
+            // --- Modal Controls ---
+            function showModal(content) {
+                modalContent.innerHTML = content;
+                modal.classList.remove('hidden');
+            }
+
+            function hideModal() {
+                modal.classList.add('hidden');
+                if (activeForm) {
+                    const formDisplay = window.getComputedStyle(activeForm).display;
+                    if (formDisplay === 'none') {
+                         if (activeForm.id.includes('form')) {
+                            activeForm.style.display = 'block'; 
+                         }
+                    }
+                    activeForm.reset();
+                    activeForm = null;
+                }
+                modalCloseBtn.classList.add('hidden');
+            }
+            
+            modalCloseBtn.addEventListener('click', hideModal);
+            
+            // --- Email Templates ---
+            const emailTemplates = {
+                newMember: (name) => ({
+                    subject: "Welcome to the ANTHONY DARKO MINISTRIES Family!",
+                    body: `Dear ${name},<br><br>Welcome to the Spirit Generation family! We are excited to walk with you in your journey of faith. As a member, you’ll receive ministry updates, prayer support, and opportunities to serve and grow spiritually.<br><br>We encourage you to stay connected through our services, events, and online platforms.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES<br>SPIRIT GENERATION CHURCH (BETH ELOHIM)`
+                }),
+                partnership: (name, level) => {
+                    const levels = {
+                        MAN: { subject: "Thank You for Partnering with Us – MAN Level", body: `Your covenant commitment at the MAN level is a blessing to the work of the Gospel. Your giving helps us reach more souls, disciple believers, and prepare the Bride of Christ for His return.` },
+                        LION: { subject: "Welcome to the LION Level Partnership", body: `We are honored to welcome you as a Kingdom Finance Partner at the LION level. Your sacrifice enables us to expand ministry impact and touch lives globally.` },
+                        OX: { subject: "Welcome to the OX Level Partnership", body: `Thank you for stepping into covenant partnership with us at the OX level. Your giving fuels Kingdom work and demonstrates your heart for the harvest. We pray for open heavens and divine favor over your life.` },
+                        EAGLE: { subject: "Welcome to the EAGLE Level Partnership", body: `It is with great joy that we welcome you to the EAGLE level partnership. Your commitment soars high above challenges to empower ministry and outreach. Thank you for flying with us in Kingdom purpose.` }
+                    };
+                    const paymentDetails = `<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko`;
+                    
+                    return {
+                        subject: levels[level].subject,
+                        body: `Dear ${name},<br><br>${levels[level].body}${paymentDetails}<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
+                    };
+                },
+                angels: (name) => ({
+                    subject: "Welcome to Angels on Assignment Partnership",
+                    body: `Dear ${name},<br><br>Thank you for joining “Angels on Assignment.” Your giving provides care, hope, and practical support to widows, orphans, and the less privileged.<br><br>Please use the reference "Angels" when giving.<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko<br><br>May God multiply your seed and reward your compassion.<br><br>Blessings,<br>ANTHONY DARKO MINISTRIES`
+                }),
+                foundation: (name) => ({
+                    subject: "Welcome to the My Daughter My Child Foundation Family",
+                    body: `Dear ${name},<br><br>We are grateful for your heart to partner with the My Daughter My Child Foundation. Your support empowers girls aged 5–18 through mentorship, education, and spiritual guidance.<br><br>Please use the reference "Foundation" when giving.<br><br><b>Payment details:</b><br>SA Mobile Money: 0677979198<br>Capitec Bank: 2077998985 (MS CNY DARKO)<br>PayPal: @prophetanthonydarko<br><br>Together, we are shaping a brighter future.<br><br>With Gratitude,<br>ANTHONY DARKO MINISTRIES`
+                }),
+            };
+
+            // --- Correct Form Submission Logic ---
+            async function handleFormSubmit(formId) {
+                const form = document.getElementById(formId);
+                if (!form) return;
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    activeForm = form;
+                    
+                    form.style.display = 'none';
+                    showModal('<div class="loader"></div><p>Submitting, please wait...</p>');
+
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+                    
+                    const name = `${data.firstName || ''} ${data.surname || ''}`.trim() || 'Friend';
+                    let emailData;
+
+                    if (formId === 'join-form') {
+                        emailData = emailTemplates.newMember(name);
+                    } else if (formId === 'partnership-form') {
+                        const level = data.partnershipLevel;
+                        if (level) {
+                           emailData = emailTemplates.partnership(name, level);
+                        }
+                    } else if (formId === 'giving-form') {
+                        if (data.givingType === 'Angels on Assignment') {
+                            emailData = emailTemplates.angels(name);
+                        } else if (data.givingType === 'Foundation Donation') {
+                            emailData = emailTemplates.foundation(name);
+                        }
+                    }
+
+                    try {
+                        const payload = {
+                            recipientEmail: data.email,
+                            recipientName: name,
+                            adminEmail: "anthonydarkoministries@gmail.com",
+                            emailTemplate: emailData,
+                            formData: data,
+                        };
+
+                        const response = await fetch(SCRIPT_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`Server responded with status: ${response.status}`);
+                        }
+                        
+                        const successMessage = `
+                            <i class="fas fa-check-circle fa-4x text-green-500 mb-4"></i>
+                            <h3 class="font-bold text-2xl text-gray-800">Submission Successful!</h3>
+                            <p class="mt-2 text-gray-600">Thank you, ${name}. Your submission has been received and you will receive a confirmation email shortly.</p>
+                        `;
+                        showModal(successMessage);
+
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        const errorMessage = `
+                            <i class="fas fa-times-circle fa-4x text-red-500 mb-4"></i>
+                            <h3 class="font-bold text-2xl text-gray-800">Submission Failed</h3>
+                            <p class="mt-2 text-gray-600">There was an error. Please try again or contact us at anthonydarkoministries@gmail.com.</p>
+                        `;
+                        showModal(errorMessage);
+                    } finally {
+                       modalCloseBtn.classList.remove('hidden');
+                    }
+                });
+            }
+            
+            ['join-form', 'prayer-form', 'discipleship-form', 'giving-form', 'partnership-form'].forEach(handleFormSubmit);
+
+            // --- Partnership Form Specific Logic ---
+            const partnershipForm = document.getElementById('partnership-form');
+            if (partnershipForm) {
+                 const partnershipLevels = document.getElementById('partnership-levels');
+                const partnerCards = partnershipLevels.querySelectorAll('.card');
+                const manAmountContainer = document.getElementById('man-amount-container');
+                const partnershipLevelInput = document.getElementById('partnershipLevelInput');
+
+                partnerCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        partnerCards.forEach(c => c.classList.remove('selected-card'));
+                        card.classList.add('selected-card');
+                        const level = card.dataset.level;
+                        partnershipLevelInput.value = level;
+                        manAmountContainer.classList.toggle('hidden', level !== 'MAN');
+                    });
+                });
+            }
+            
+            // Set partnership date to today
+            const pDateInput = document.getElementById('p-date');
+            if(pDateInput) {
+                pDateInput.valueAsDate = new Date();
+            }
+
+            // Show initial page based on hash or default to home
+            const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
+            if (document.getElementById(initialPage)) {
+                 showPage(initialPage);
+            } else {
+                 showPage('home');
+            }
         });
-        mobileMenu.classList.add('hidden');
-        window.scrollTo(0, 0);
-        if(history.pushState) {
-            history.pushState(null, null, `#${pageId}`);
-        } else {
-            location.hash = pageId;
-        }
-    }
-
-    navTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pageId = trigger.getAttribute('href').substring(1);
-            showPage(pageId);
-        });
-    });
-
-    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
-    if (document.getElementById(initialPage)) {
-        showPage(initialPage);
-    } else {
-        showPage('home');
-    }
-});
-</script>
+    </script>
 </body>
 </html>
